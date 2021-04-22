@@ -8,10 +8,6 @@ URL shortening is a technique on the Web in which a Uniform Resource Locator (UR
     cd shortly
     yarn install
 
-## Setup
-
-- Create your .env file using your Github API access token and the .sample-env file as a sample
-
 ## Development
 
     yarn start
