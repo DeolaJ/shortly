@@ -59,20 +59,8 @@ const MobileMenu: FC<NavMenuProps> = ({ navItems, navButtons }) => {
 };
 
 MobileMenu.propTypes = {
-  navItems: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      text: PropTypes.string.isRequired,
-      link: PropTypes.string.isRequired,
-    }).isRequired
-  ).isRequired,
-  navButtons: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      text: PropTypes.string.isRequired,
-      link: PropTypes.string.isRequired,
-    }).isRequired
-  ).isRequired,
+  navItems: PropTypes.any.isRequired,
+  navButtons: PropTypes.any.isRequired,
 };
 
 export default MobileMenu;
