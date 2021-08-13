@@ -15,6 +15,13 @@ const ShortenInput: FC<ShortenInputProps> = ({ url, setUrl, errorStatus, errorTe
         value={url}
         onChange={(e: React.ChangeEvent<HTMLInputElement>) => setUrl(e.target.value)}
         onBlur={(e: React.ChangeEvent<HTMLInputElement>) => setUrl(e.target.value)}
+        onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => {
+          const keyCode = e.keyCode || e.code;
+          if (keyCode === 13) {
+            const shortenButton: HTMLButtonElement = document.querySelector('.shorten-button');
+            shortenButton.click();
+          }
+        }}
         placeholder="Shorten a link here..."
         className={`py-3 text-base px-6 sm:py-4 sm:text-lg rounded-md w-full h-full shorten-input ${
           errorStatus ? 'border-secondary-red border-2 border-solid' : ''

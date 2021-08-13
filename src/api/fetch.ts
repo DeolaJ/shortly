@@ -10,16 +10,21 @@ type ResultProps = {
 };
 
 type ResponseProps = {
-  ok: boolean;
   result?: ResultProps;
   error?: string;
 };
 
-async function shortenAPI(url: string): Promise<{ response: ResponseProps }> {
-  return fetch('/api/shorten', {
-    method: 'POST',
-    body: JSON.stringify({ url }),
-  }).then((response) => response.json());
+async function shortenAPI(url: string): Promise<{ response?: ResponseProps; message?: string; error?: Error }> {
+  try {
+    const result = await fetch(`https://api.shrtco.de/v2/shorten?url=${url}`)
+      .then((response) => response.json())
+      .catch((error) => {
+        throw new Error(error);
+      });
+    return { response: result };
+  } catch (error) {
+    return { message: 'an error occurred', error };
+  }
 }
 
 export default shortenAPI;
