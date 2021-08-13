@@ -47,7 +47,7 @@ function useShortener(
     setStatus(true);
     return shortenAPI(url)
       .then((response) => {
-        if (response.response.ok) {
+        if (response.response) {
           const { result } = response.response;
           const data = {
             shortLink: result.full_short_link,
